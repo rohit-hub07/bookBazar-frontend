@@ -11,8 +11,8 @@ const Navbar = ({ isLoggedIn }) => {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async() => {
+    await logout();
     navigate("/auth/login")
   }
   return (
