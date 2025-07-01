@@ -29,13 +29,13 @@ function App() {
       <Routes>
         <Route
           path="/auth/login"
-          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+          element={!authUser ? <LoginPage /> : <Navigate to={"/"} />}
         />
 
         <Route path="/" element={<Layout />}>
           <Route
             path="/"
-            element={authUser ? <HomePage /> : <Navigate to="/auth/login" />}
+            element={authUser ? <HomePage /> : <Navigate to={"/auth/login"} />}
           />
 
           <Route path="/books/:id" element={<BookDetail />} />
