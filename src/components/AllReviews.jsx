@@ -48,7 +48,7 @@ const AllReviews = () => {
               <div className="flex items-center gap-3">
                 <div className="flex items-center text-yellow-500">
                   <Star size={18} />
-                  <span className="ml-1 font-semibold">{review.rating}/10</span>
+                  <span className="ml-1 font-semibold">{review.rating}/5</span>
                 </div>
                 {/* Delete Icon */}
                 {authUser?.role === "admin" || authUser?._id == review?.user?._id ? (

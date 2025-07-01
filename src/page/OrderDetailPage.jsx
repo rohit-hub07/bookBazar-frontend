@@ -45,7 +45,7 @@ const OrderDetailPage = () => {
 
         <p className="flex items-center text-lg text-gray-700 font-medium">
           <IndianRupee className="text-green-600 mr-2" size={20} />
-          {bookDetail.price}
+          {bookDetail.price * quantity}
         </p>
 
         <p className="flex items-center text-base text-gray-600">
