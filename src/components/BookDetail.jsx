@@ -9,7 +9,11 @@ const BookDetail = () => {
   const { book, getBookDetails,deleteBook } = useBookStore();
   const { authUser } = useAuthStore();
   const navigate = useNavigate();
-  
+
+  useEffect(() => {
+    getBookDetails(id);
+  }, [id, getBookDetails]);
+
   let isAdmin = false;
   const checking = () => {
     if(authUser?.role === "admin"){
@@ -21,9 +25,7 @@ const BookDetail = () => {
   };
 
   const isMatched = checking();
-  useEffect(() => {
-    getBookDetails(id);
-  }, [id, getBookDetails]);
+  
 
   const defaultCover =
     "https://th.bing.com/th/id/OIP.4fZvK8IfIRSr_aHUa_tSiAHaKl?w=208&h=297&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3";
@@ -36,7 +38,7 @@ const BookDetail = () => {
   return (
     <div className="max-w-4xl mx-auto my-12 px-4 sm:px-6 lg:px-8">
       <div className="bg-white shadow-lg rounded-xl overflow-hidden lg:flex lg:items-center">
-        {/* Enlarged Cover */}
+
         <div className="lg:flex-shrink-0 w-full lg:w-2/5 relative">
           <img
             src={book?.bookImage || defaultCover}
@@ -49,7 +51,7 @@ const BookDetail = () => {
           />
         </div>
 
-        {/* Details & Add to Cart Button */}
+       
         <div className="p-6 lg:w-3/5 flex flex-col justify-between">
           <div>
             <h2 className="text-4xl lg:text-5xl font-semibold text-blue-700 mb-2">
@@ -64,7 +66,7 @@ const BookDetail = () => {
             </p>
           </div>
 
-          {/* Add to Cart Button using Lucide icon */}
+          
           <Link to={`/orders/${book?._id}`}>
             <button
               aria-label={`Add ${book?.title} to cart`}
