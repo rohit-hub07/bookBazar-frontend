@@ -6,7 +6,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 const BookDetail = () => {
   const { id } = useParams();
-  const { book, getBookDetails,deleteBook } = useBookStore();
+  const { book, getBookDetails,deleteBook,isBookLoading } = useBookStore();
   const { authUser } = useAuthStore();
   const navigate = useNavigate();
 
@@ -34,7 +34,14 @@ const BookDetail = () => {
     await deleteBook(id);
     navigate("/");
   }
-
+  if (isBookLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-[300px]">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-600 border-solid"></div>
+        <span className="ml-4 text-blue-700 text-xl font-semibold">Loading Book Details...</span>
+      </div>
+    );
+  }
   return (
     <div className="max-w-4xl mx-auto my-12 px-4 sm:px-6 lg:px-8">
       <div className="bg-white shadow-lg rounded-xl overflow-hidden lg:flex lg:items-center">
